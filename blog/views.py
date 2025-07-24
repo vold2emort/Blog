@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from .forms import ReviewForm
+from django.views.generic import FormView
 # Create your views here.
 
 
@@ -16,3 +18,11 @@ def posts(request):
 def post_detail(request, slug):
     identified_post = get_object_or_404(Post, slug=slug)
     return render(request, "blog/post-detail.html", {'post': identified_post, "post_tags":identified_post.tags.all()})
+
+class ReviewView(FormView):
+    template_name = "blog/review.html"
+    form_class = ReviewForm
+    success_url = "home-page"
+
+    def post(self, request):
+        form = ReviewForm()

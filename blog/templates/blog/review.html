@@ -1,0 +1,13 @@
+
+{% load static %}
+
+<title>Review</title>
+
+{% block content%}
+<h2>Any opinion/Comment? </h2>
+<p>Enter your opinion about the blog and if you want to see any features added in the future!</p>
+<form method="post">
+{{ form.as_p }}
+<button type="submit">Submit</button>
+</form>
+{% endblock %}
