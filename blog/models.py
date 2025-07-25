@@ -21,10 +21,10 @@ class Tag(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     excerpt = models.TextField()
-    image_name = models.CharField(max_length=100)
     date = models.DateField(auto_now=True)
     content = models.TextField(validators=[MinLengthValidator(10)])
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, related_name='posts', null="True")
     slug = models.SlugField(unique=True, null=False)
     tags = models.ManyToManyField(Tag)
+    image = models.ImageField(upload_to="images", null="True", blank="True")
 
