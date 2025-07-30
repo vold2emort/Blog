@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block css_files %}
-<link rel='stylesheet' href="{% static "blog/post-detail.css" %}"/>
+<link rel='stylesheet' href="{% static 'blog/post-detail.css' %}"/>
 {% endblock %}
 
 {% block content %}
@@ -29,4 +29,18 @@
         {{ post.content| linebreaks }}
     </p>
 </main>
+<section id="comment-form">
+        <h2>Your Comment</h2>
+        <form method="POST" action="{% url 'post-detail-page' post.slug%}">
+            {% csrf_token %}
+            {% for form_field in comment_form %}
+            <div class="form-control">
+                {{ form_field.label_tag }}
+                {{ form_field }}
+                {{ form_field.errors }}
+            </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </section>
 {% endblock %}
