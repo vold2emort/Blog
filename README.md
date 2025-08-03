@@ -30,13 +30,6 @@ A simple and customizable blog web application built with Django. Users can crea
 git clone https://github.com/your-username/django-blog-project.git
 cd django-blog-project
 
-# Create virtual environment
-python -m venv env
-source env/bin/activate  # on Windows use `env\Scripts\activate`
-
-# Install dependencies
-pip install -r requirements.txt
-
 # Apply migrations
 python manage.py migrate
 
