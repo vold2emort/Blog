@@ -28,6 +28,9 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
     image = models.ImageField(upload_to="images", null="True", blank="True")
 
+    def __str__(self):
+         return f"{self.title}"
+
 class Comment(models.Model):
 	user_name = models.CharField(max_length=120)
 	user_email = models.EmailField()

@@ -1,7 +1,7 @@
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Post
-from .forms import ReviewForm, CommentForm
+from .forms import CommentForm
 from django.views.generic import ListView
 from django.views import View
 # Create your views here.
@@ -33,7 +33,8 @@ class SinglePostView(View):
         context = {
             "post": post,
             "post_tags": post.tags.all(),
-            "comment_form": CommentForm()
+            "comment_form": CommentForm(),
+            "comments": post.comments.all().order_by("-id")
         }
         return render(request, "blog/post-detail.html", context)
 
@@ -43,10 +44,12 @@ class SinglePostView(View):
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.post = post
+            comment.save()
             return HttpResponseRedirect(reverse("post-detail-page", args=[slug]))
         context = {
             "post": post,
             "post_tags": post.tags.all(),
-            "comment_form": comment_form
+            "comment_form": comment_form,
+            "comments": post.comments.all().order_by("-id")
         }
         return render(request, "blog/post-detail.html", context)
