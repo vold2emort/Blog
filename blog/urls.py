@@ -6,5 +6,5 @@ urlpatterns = [
     path("posts", views.PostsView.as_view(), name='posts-page', ),
     # This concept is called slug, /posts/first-post, /posts/second-post ...
     path("posts/<slug:slug>", views.SinglePostView.as_view(), name='post-detail-page'),
-    # path("review", views.ReviewView.as_view(), name="review")
+    path("read-later", views.ReadLaterView.as_view(), name='read-later'),
 ]
