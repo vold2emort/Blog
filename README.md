@@ -1,3 +1,5 @@
+Live demo :- https://pramish.pythonanywhere.com/ 
+
 # 📝 Django Blog Project
 
 A simple and customizable blog web application built with Django. Users can create, update, and delete blog posts, view author profiles, and leave comments.
